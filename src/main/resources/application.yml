@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: ${PORT:8080}
 
 spring:
   application:
@@ -15,13 +15,16 @@ spring:
     hikari:
       maximum-pool-size: 30
       minimum-idle: 10
-      connection-timeout: 20000
+      connection-timeout: 30000
+      initialization-fail-timeout: -1
   jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
         format_sql: false
+        dialect: org.hibernate.dialect.MySQLDialect
     show-sql: false
 
 management:
